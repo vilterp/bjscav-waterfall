@@ -7,6 +7,7 @@ void setup() {
   for (int i = lowpin; i <= highpin; i++) {
     pinMode(i, OUTPUT);
   }
+  Serial.println("starting");
 }
 
 int ST_BETWEEN_LINES = 1;
@@ -16,10 +17,12 @@ int state = ST_BETWEEN_LINES;
 int cur_line[35];
 
 void loop() {
+  Serial.println("loop");
   // send data only when you receive data:
 	int row_idx = 0;
 
 	if (Serial.available() > 0) {
+//                Serial.println("FUUUCKKKKK!!!!!!!!!!!!");
 		int incomingByte = Serial.read();
 		if(state == ST_BETWEEN_LINES && incomingByte == 10) {
 			Serial.println("start line");

@@ -38,7 +38,7 @@ STOP = 11
 LINE_INTERVAL = .01 # TODO: test
 
 def main():
-	# conn = serial.Serial('/dev/tty.usbmodemfd121', 9600)
+	conn = serial.Serial('/dev/tty.usbmodemfd121', 9600)
 	print 'sleeping...'
 	time.sleep(2)
 	while True:
@@ -49,14 +49,14 @@ def main():
 		for i in range(len(text)):
 			print 'streaming %s' % text[i]
 			letter = letter_arrays[i]
-			# conn.write(chr(START))
-			for row in letter:
-				# print 'START'
+			for row in reversed(letter):
+				conn.write(chr(START))
+				print 'START'
 				for col in row:
-					# conn.write(chr(col))
-					# print col
-					pass
-				# conn.write(chr(STOP))
+					conn.write(chr(col))
+					print col
+					# pass
+				conn.write(chr(STOP))
 				# print 'STOP'
 				print 'line'
 				time.sleep(LINE_INTERVAL)
