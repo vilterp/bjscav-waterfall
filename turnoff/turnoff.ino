@@ -11,3 +11,11 @@ void setup() {
   }
 }
 
+int iter = 0;
+void loop() {
+  for(int i=0; i < 35; i++) {
+    digitalWrite(i, iter % 2 == 0 ? HIGH : LOW);
+  }  
+  iter++;
+  delay(500);
+}

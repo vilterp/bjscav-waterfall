@@ -12,7 +12,7 @@ def main():
 		for col in range(cols):
 			pixel = image[row,col]
 			r, g, b = pixel[0], pixel[1], pixel[2]
-			if (r+g+b) < 1.5:
+			if (r+g+b) > 1.5:
 				this_row.append(1)
 			else:
 				this_row.append(0)
